@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset ="utf-8">
-<Title> SpaceyWeb</title>
-  <style>
-    body{
-     background-image:url("https://media.wired.com/photos/5cd5df1f2948ca2e63b090f0/4:3/w_2400,c_limit/01_SPoW_051119.jpg");
-    }
-    p{
-      color:rgb(214, 197, 8);
-    }
-    h1{
-     color:rgb(214, 197, 8);
-    }
-    </style>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
 </head>
-<body>
-
-<h1> Welcome to the SpaceyWeb!</h1>
-
-<p>Here I hope to add a collection of games and interesting programs by me that we can all enjoy</p>
-<script language="javascript" type="processing/javascript">
-  var highScore=0;
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        
+        // ProgramCodeGoesHere
+        var highScore=0;
 var collision=0;
 var boxesCollision=function(x1,y1,w1,h1,x2,y2,w2,h2){
     if(x1>=x2&&x1<=x2+w2){
@@ -141,7 +144,7 @@ draw= function() {
 
         counter=counter+1;
     }
-    if(keyIsPressed &&y===200){
+    if(keyPressed &&y===200){
         yv=-11;
     }
     y=y+yv;yv=yv+0.7;
@@ -200,7 +203,7 @@ if (dead===1){
     if(deadWait<60){
        deadWait=deadWait+1;
     }
-    if(deadWait===61&&keyIsPressed){
+    if(deadWait===61&&keyPressed){
         y=200;
         if(score>highScore){
         highScore=score;
@@ -218,11 +221,12 @@ if (dead===1){
 }
 };
 
-  </script>
+    }};
 
-</body>
-
-
-
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
 
 </html>
