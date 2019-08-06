@@ -7,24 +7,51 @@ https://github.com/Team-Code/KA_Offline -->
     <style>
         body{
             background:black;
-        }
-        h2,h1{
             color:rgb(194, 185, 8);
             font-family:sans-serif;
         }
+        #grand-title{
+            font-size:65px;
+            position:relative;
+            top:25px;
+            margin:87;
+        }
+        #moreComing{
+                width: 51%;
+                font-family: monospace;
+                padding: 7px;
+                background: rgb(105, 105, 105);
+                margin:0 auto;
+        }
+        #game-list{
+            padding-left:159px;
+        }
+        .description{
+            width:70%;
+            padding-left:89px;
+        }
+        
     </style>
 </head>
  <body>
- <h2 align="center">SpaceyWeb Presents...</h2>
-  <h1 align="center">Square Dash!</h1>
+ <h1 id ="grand-title"align="center">SpaceyWeb</h1><br>
+ 
+ <h2 align="center">Fun Stuff!</h2>
+ <div id="game-list"><ul>
+     <li><a href="#square-dash-head">SquareDash</a></li>
+ </ul></div>
+ <br>
+  <h1 id="square-dash-head" align="center">Square Dash!</h1>
+  <p class="description">How to play: Press any key to jump, and avoid the obstacles at all cost.</p>
 
     <p align="center"> 
 	<!--This draws the Canvas on the webpage -->
       <canvas id="mycanvas"></canvas> 
     </p>
- </body>
- 
- <!-- Run all the JavaScript stuff -->
+    
+    
+    <h3 id="moreComing"align="center">More Coming Soon!!!</h3>
+    <!-- Run all the JavaScript stuff -->
  <!-- Include the processing.js library -->
  <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
  <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
@@ -35,7 +62,9 @@ https://github.com/Team-Code/KA_Offline -->
         size(400, 400); 
         frameRate(60);
         
-        // ProgramCodeGoesHere
+        // ProgramCodeGoesHere////////////////////////////
+        
+        
         var highScore=0;
 var collision=0;
 var boxesCollision=function(x1,y1,w1,h1,x2,y2,w2,h2){
@@ -156,15 +185,15 @@ var draw= function() {
 
         counter=counter+1;
     }
-    if(keyCode===38 &&y===200&&keyPressed){
-        keyCode=20;
+    if(keyCode!==0 &&y===200&&keyPressed){
+        keyCode=0;
         yv=-11;
     }
     y=y+yv;yv=yv+0.7;
     if(y>200){
         yv=0;
         y=200;
-        keyCode=20;
+        keyCode=0;
     }
     //player
     fill(0, 26, 255);
@@ -209,7 +238,7 @@ if (dead===1){
  // "if" for dead below   
 }else{
     if(deadWait===60){
-        keyCode=20;
+        keyCode=0;
         fill(0, 0, 0);
         text("Press any key to continue",60,100);
         deadWait=deadWait+1;
@@ -218,9 +247,9 @@ if (dead===1){
     if(deadWait<60){
        deadWait=deadWait+1;
     }
-    if(deadWait===61&&keyCode===38&&keyPressed){
+    if(deadWait===61&&keyCode!==0&&keyPressed){
         y=200;
-        keyCode=20;
+        keyCode=0;
         if(score>highScore){
         highScore=score;
         }
@@ -245,5 +274,8 @@ if (dead===1){
     // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
     var processingInstance = new Processing(canvas, sketchProc); 
  </script>
+ </body>
+ 
+ 
 
 </html>
