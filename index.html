@@ -30,7 +30,7 @@ https://github.com/Team-Code/KA_Offline -->
     var sketchProc = function(processingInstance) {
      with (processingInstance) {
         size(400, 400); 
-        frameRate(30);
+        frameRate(45);
         
         // ProgramCodeGoesHere
         var highScore=0;
@@ -153,13 +153,15 @@ var draw= function() {
 
         counter=counter+1;
     }
-    if(keyPressed &&y===200){
+    if(keyCode===38 &&y===200&&keyPressed){
+        keyCode=20;
         yv=-11;
     }
     y=y+yv;yv=yv+0.7;
     if(y>200){
         yv=0;
         y=200;
+        keyCode=20;
     }
     //player
     fill(0, 26, 255);
@@ -212,8 +214,9 @@ if (dead===1){
     if(deadWait<60){
        deadWait=deadWait+1;
     }
-    if(deadWait===61&&keyPressed){
+    if(deadWait===61&&keyCode===38&&keyPressed){
         y=200;
+        keyCode=20;
         if(score>highScore){
         highScore=score;
         }
@@ -229,6 +232,7 @@ if (dead===1){
     }
 }
 };
+
 
     }};
 
