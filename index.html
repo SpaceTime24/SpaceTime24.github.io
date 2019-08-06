@@ -3,18 +3,18 @@
 https://github.com/Team-Code/KA_Offline -->
 <html> 
  <head>
-    <title>Processing.JS inside Webpages: Template</title> 
+    <title>SpaceyWeb</title> 
     <style>
         body{
             background:black;
         }
-        #header{
-            color:rgb(186, 183, 31);
+        h1{
+            color:rgb(194, 185, 8);
         }
     </style>
 </head>
  <body>
- <h1 id="header" align="center">SpaceyWeb: a faulty game</h1>
+ <h1 align="center">SpaceyWeb: a faulty game</h1>
     <p align="center"> 
 	<!--This draws the Canvas on the webpage -->
       <canvas id="mycanvas"></canvas> 
@@ -102,7 +102,7 @@ var backGround=function(dn){
 var time=0;
 
 //start draw
-draw= function() {
+var draw= function() {
     if(dead===0){time=time+1;
     if (time<dayLength/2){
         backGround(1);
