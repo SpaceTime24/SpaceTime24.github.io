@@ -164,15 +164,15 @@ var draw= function() {
 
         counter=counter+1;
     }
-    if(keyCode===38 &&y===200&&keyPressed){
-        keyCode=20;
+    if(keyCode!==0 &&y===200&&keyPressed){
+        keyCode=0;
         yv=-11;
     }
     y=y+yv;yv=yv+0.7;
     if(y>200){
         yv=0;
         y=200;
-        keyCode=20;
+        keyCode=0;
     }
     //player
     fill(0, 26, 255);
@@ -217,7 +217,7 @@ if (dead===1){
  // "if" for dead below   
 }else{
     if(deadWait===60){
-        keyCode=20;
+        keyCode=0;
         fill(0, 0, 0);
         text("Press any key to continue",60,100);
         deadWait=deadWait+1;
@@ -226,9 +226,9 @@ if (dead===1){
     if(deadWait<60){
        deadWait=deadWait+1;
     }
-    if(deadWait===61&&keyCode===38&&keyPressed){
+    if(deadWait===61&&keyCode!==0&&keyPressed){
         y=200;
-        keyCode=20;
+        keyCode=0;
         if(score>highScore){
         highScore=score;
         }
